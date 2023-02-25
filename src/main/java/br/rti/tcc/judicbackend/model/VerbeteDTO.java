@@ -1,22 +1,15 @@
 package br.rti.tcc.judicbackend.model;
 
-
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-import java.util.List;
-
+@Data
 @AllArgsConstructor
-@Getter
-@Setter
 public class VerbeteDTO {
+    private Long id;
 
+    private String verbete;
 
-    private String Usuario;
-    private Long ID;
+    private Long pessoa;
 
-    private String Verbete;
-
-    private List<SignificadoDTO> significados;
 }

@@ -1,6 +1,7 @@
 package br.rti.tcc.judicbackend.service;
 
 import br.rti.tcc.judicbackend.adapter.Adaptador;
+import br.rti.tcc.judicbackend.model.Verbete;
 import br.rti.tcc.judicbackend.model.VerbeteDTO;
 import br.rti.tcc.judicbackend.repository.VerbeteRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,16 +16,12 @@ public class VerbeteService {
 
     private Adaptador adaptador;
 
-    VerbeteService(VerbeteRepository verbeteRepository, @Qualifier("glossario") Adaptador adaptador1){
+    VerbeteService(VerbeteRepository verbeteRepository, @Qualifier("glossario") Adaptador adaptador){
         this.verbeteRepository = verbeteRepository;
-        this.adaptador = adaptador1;
+        this.adaptador = adaptador;
     }
 
     public Page<VerbeteDTO> listAll(Pageable page){
-        return (Page<VerbeteDTO>) adaptador.mapping(verbeteRepository.findAll(page), page);
-    }
-
-    public Page<VerbeteDTO> findByVerbete(String verbete, Pageable page){
-        return (Page<VerbeteDTO>) adaptador.mapping(verbeteRepository.buscaPorVerbete(verbete, page), page);
+        return (Page<VerbeteDTO>) adaptador.mapping(verbeteRepository.findAll(page),page);
     }
 }

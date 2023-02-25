@@ -1,13 +1,12 @@
 package br.rti.tcc.judicbackend.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import javax.persistence.*;
+import lombok.*;
+import jakarta.persistence.*;
+//import javax.persistence.*;
 import java.util.List;
 
+@Data
+@Builder
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,8 +16,7 @@ import java.util.List;
 public class Pessoa {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pessoa_id_seq")
-    @SequenceGenerator(name ="pessoa_id_seq", sequenceName = "pessoa_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String usuario;
@@ -32,10 +30,10 @@ public class Pessoa {
     @JoinColumn(name = "papel_id")
     private Papel papel;
 
-    @OneToMany(fetch = FetchType.LAZY)
+/*    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumns(value = {
             @JoinColumn(name = "papel_id", referencedColumnName = "id")
     })
-    private List<Verbete> verbetes;
+    private List<Verbete> verbetes;*/
 
 }

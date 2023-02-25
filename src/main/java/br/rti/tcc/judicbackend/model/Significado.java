@@ -1,12 +1,12 @@
 package br.rti.tcc.judicbackend.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.*;
+//import javax.persistence.*;
+import jakarta.persistence.*;
 
+@Data
+@Builder
 @Getter
 @Setter
 @NoArgsConstructor
@@ -16,8 +16,7 @@ import javax.persistence.*;
 public class Significado {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "significado_id_seq")
-    @SequenceGenerator(name ="significado_id_seq", sequenceName = "significado_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String significado;
 

@@ -1,5 +1,6 @@
 package br.rti.tcc.judicbackend.model;
 
+
 import br.rti.tcc.judicbackend.adapter.Adaptador;
 import br.rti.tcc.judicbackend.repository.VerbeteRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @Component
 @Qualifier("glossario")
-public class VerbeteAdapterImpl implements Adaptador<Page<VerbeteDTO>,Page<Verbete>> {
+public class VerbeteAdapterImpl implements Adaptador<Page<VerbeteDTO>, Page<Verbete>> {
     private List<VerbeteDTO> verbeteDTOS;
 
     VerbeteAdapterImpl(VerbeteRepository verbeteRepository){
@@ -25,17 +26,11 @@ public class VerbeteAdapterImpl implements Adaptador<Page<VerbeteDTO>,Page<Verbe
         verbeteDTOS.clear();
 
         lista.forEach(verbete -> {
-            List<SignificadoDTO> significadoDTOS = new ArrayList<>();
-            verbete.getSignificados().forEach(significado -> {
-                significadoDTOS.add(new SignificadoDTO(significado.getSignificado()));
-            });
-
             this.verbeteDTOS.add(
                     new VerbeteDTO(
-                        verbete.getPessoa().getUsuario(),
-                        verbete.getId(),
-                        verbete.getVerbete(),
-                        significadoDTOS
+                            verbete.getId(),
+                            verbete.getVerbete(),
+                            verbete.getPessoa().getId()
                     )
             );
         });
@@ -43,4 +38,5 @@ public class VerbeteAdapterImpl implements Adaptador<Page<VerbeteDTO>,Page<Verbe
         Page<VerbeteDTO> pageDTO = new PageImpl<>(verbeteDTOS, page, lista.getTotalElements());
         return pageDTO;
     }
+
 }

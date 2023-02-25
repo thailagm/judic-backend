@@ -14,7 +14,7 @@
     <name>judic-backend</name>
     <description>judic-backend</description>
     <properties>
-        <java.version>17</java.version>
+        <java.version>11</java.version>
     </properties>
     <dependencies>
         <dependency>
@@ -36,16 +36,19 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-            <scope>runtime</scope>
-        </dependency>
+
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -110,13 +113,23 @@
             <version>8.5.13</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.14.1</version>
+        </dependency>
+
+
+
+
+
     </dependencies>
 
-    <profiles>
+<!--    <profiles>
         <profile>
-            <id>java17</id>
+            <id>java11</id>
             <activation>
-                <jdk>[17,)</jdk>
+                <jdk>[11,)</jdk>
             </activation>
 
             <dependencies>
@@ -127,7 +140,7 @@
 
             </dependencies>
         </profile>
-    </profiles>
+    </profiles>-->
 
     <build>
         <plugins>

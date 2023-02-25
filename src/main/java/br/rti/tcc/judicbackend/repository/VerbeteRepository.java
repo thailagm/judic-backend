@@ -1,9 +1,9 @@
 package br.rti.tcc.judicbackend.repository;
 
 
-
 import br.rti.tcc.judicbackend.model.Verbete;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
