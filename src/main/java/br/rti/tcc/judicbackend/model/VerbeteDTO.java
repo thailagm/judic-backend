@@ -3,6 +3,8 @@ package br.rti.tcc.judicbackend.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 public class VerbeteDTO {
@@ -11,5 +13,7 @@ public class VerbeteDTO {
     private String verbete;
 
     private Long pessoa;
+
+    private List<SignificadoDTO> significados;
 
 }

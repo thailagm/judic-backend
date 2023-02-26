@@ -37,12 +37,32 @@ public class VerbeteController {
             @ApiImplicitParam(name = "sort", allowMultiple = true, dataType = "string", paramType = "query",
                     value = "Ordenacao dos registros")
     })
-    @ApiOperation(value = "Retorna verbetes ")
+    @ApiOperation(value = "Retorna verbetes")
     public ResponseEntity listAll(
             @PageableDefault(sort = "id",
                     direction = Sort.Direction.ASC,
                     page = 0,
                     size = 10) @ApiIgnore Pageable page){
         return ResponseEntity.ok(verbeteService.listAll(page));
+    }
+
+    @GetMapping("/{verbete}")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "page", dataType = "integer", paramType = "query",
+                    value = "Pagina a ser carregada", defaultValue = "0"),
+            @ApiImplicitParam(name = "size", dataType = "integer", paramType = "query",
+                    value = "Quantidade de registros", defaultValue = "5"),
+            @ApiImplicitParam(name = "sort", allowMultiple = true, dataType = "string", paramType = "query",
+                    value = "Ordenacao dos registros")
+    })
+    public ResponseEntity buscarPorVerbete(@PathVariable(name = "verbete") String verbete,
+                                           @PageableDefault(sort = "id",
+                                                   direction = Sort.Direction.DESC,
+                                                   page = 0,
+                                                   size = 10)
+                                           @ApiIgnore Pageable page){
+        verbete = verbete.toLowerCase();
+        return ResponseEntity.ok(verbeteService.findByVerbete(verbete,page));
+
     }
 }

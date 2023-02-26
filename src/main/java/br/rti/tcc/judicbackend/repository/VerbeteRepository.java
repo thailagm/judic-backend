@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 public interface VerbeteRepository extends JpaRepository<Verbete, Long> {
 
 
-    @Query(value = "select v from Verbete v where lower(v.verbete) like %?1%")
+    @Query(value = "select v from Verbete v where lower(v.verbete) like %?1% order by v.verbete")
     Page<Verbete> buscaPorVerbete(String verbete, Pageable page);
 
 }

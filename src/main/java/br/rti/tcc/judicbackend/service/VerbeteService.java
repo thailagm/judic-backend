@@ -24,4 +24,8 @@ public class VerbeteService {
     public Page<VerbeteDTO> listAll(Pageable page){
         return (Page<VerbeteDTO>) adaptador.mapping(verbeteRepository.findAll(page),page);
     }
+
+    public Page<VerbeteDTO> findByVerbete(String verbete, Pageable page){
+        return (Page<VerbeteDTO>) adaptador.mapping(verbeteRepository.buscaPorVerbete(verbete, page), page);
+    }
 }

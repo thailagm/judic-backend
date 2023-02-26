@@ -30,7 +30,7 @@ public class Verbete {
     @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumns(value = {
             @JoinColumn(name = "verbete_id", referencedColumnName = "id")
     })

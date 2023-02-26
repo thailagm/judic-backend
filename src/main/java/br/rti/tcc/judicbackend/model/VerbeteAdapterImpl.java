@@ -26,11 +26,17 @@ public class VerbeteAdapterImpl implements Adaptador<Page<VerbeteDTO>, Page<Verb
         verbeteDTOS.clear();
 
         lista.forEach(verbete -> {
+            List<SignificadoDTO> significadoDTOS = new ArrayList<>();
+            verbete.getSignificados().forEach(significado -> {
+                significadoDTOS.add(new SignificadoDTO(significado.getSignificado()));
+            });
+
             this.verbeteDTOS.add(
                     new VerbeteDTO(
                             verbete.getId(),
                             verbete.getVerbete(),
-                            verbete.getPessoa().getId()
+                            verbete.getPessoa().getId(),
+                            significadoDTOS
                     )
             );
         });
