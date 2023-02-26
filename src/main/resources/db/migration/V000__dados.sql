@@ -3,11 +3,11 @@ CREATE TABLE papel(
                       nome VARCHAR(255),
                       CONSTRAINT pk_papel PRIMARY KEY(id)
 );
-CREATE SEQUENCE papel_id_seq
+/*CREATE SEQUENCE papel_id_seq
     INCREMENT BY 1
     MINVALUE 1
     MAXVALUE 9223372036854775807
-    START 1;
+    START 1;*/
 
 
 CREATE TABLE pessoa(
@@ -19,11 +19,11 @@ CREATE TABLE pessoa(
                        papel_id BIGINT NOT NULL,
                        CONSTRAINT pk_pessoa PRIMARY KEY(id)
 );
-CREATE SEQUENCE pessoa_id_seq
+/*CREATE SEQUENCE pessoa_id_seq
     INCREMENT BY 1
     MINVALUE 1
     MAXVALUE 9223372036854775807
-    START 1;
+    START 1;*/
 
 ALTER TABLE pessoa ADD CONSTRAINT FK_PESSOA_ON_PAPEL FOREIGN KEY (papel_id) REFERENCES papel(id);
 
@@ -33,11 +33,11 @@ CREATE TABLE verbete(
                         pessoa_id BIGINT NOT NULL,
                         CONSTRAINT pk_verbete PRIMARY KEY(id)
 );
-CREATE SEQUENCE verbete_id_seq
+/*CREATE SEQUENCE verbete_id_seq
     INCREMENT BY 1
     MINVALUE 1
     MAXVALUE 9223372036854775807
-    START 1;
+    START 1;*/
 
 ALTER TABLE verbete ADD CONSTRAINT FK_VERBETE_ON_PAPEL FOREIGN KEY (pessoa_id) REFERENCES pessoa(id);
 
@@ -49,11 +49,11 @@ CREATE TABLE significado(
                             CONSTRAINT pk_significado PRIMARY KEY(id)
 
 );
-CREATE SEQUENCE significado_id_seq
+/*CREATE SEQUENCE significado_id_seq
     INCREMENT BY 1
     MINVALUE 1
     MAXVALUE 9223372036854775807
-    START 1;
+    START 1;*/
 
 ALTER TABLE significado ADD CONSTRAINT FK_SIGNIFICADO_ON_PAPEL FOREIGN KEY (verbete_id) REFERENCES verbete(id);
 
