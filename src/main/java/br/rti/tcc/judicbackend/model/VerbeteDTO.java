@@ -12,7 +12,6 @@ public class VerbeteDTO {
 
     private String verbete;
 
-    private Long pessoa;
 
     private List<SignificadoDTO> significados;
 

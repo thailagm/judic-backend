@@ -35,7 +35,6 @@ public class VerbeteAdapterImpl implements Adaptador<Page<VerbeteDTO>, Page<Verb
                     new VerbeteDTO(
                             verbete.getId(),
                             verbete.getVerbete(),
-                            verbete.getPessoa().getId(),
                             significadoDTOS
                     )
             );

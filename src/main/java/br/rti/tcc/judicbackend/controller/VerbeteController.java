@@ -20,12 +20,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/glossario")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class VerbeteController {
 
     @Autowired
     private VerbeteService verbeteService;
 
-    //@CrossOrigin(origins = "https://www.vshsolutions.com/")
     @GetMapping
     @ApiImplicitParams({
             @ApiImplicitParam(name = "page", dataType = "integer", paramType = "query",
@@ -53,13 +53,14 @@ public class VerbeteController {
             @ApiImplicitParam(name = "sort", allowMultiple = true, dataType = "string", paramType = "query",
                     value = "Ordenacao dos registros")
     })
-    public ResponseEntity buscarPorVerbete(@PathVariable(name = "verbete") String verbete,
-                                           @PageableDefault(sort = "id",
-                                                   direction = Sort.Direction.DESC,
-                                                   page = 0,
-                                                   size = 10)
-                                           @ApiIgnore Pageable page){
-        verbete = verbete.toLowerCase();
+    public ResponseEntity buscarPorVerbete(
+                    @PathVariable(name = "verbete") String verbete,
+                    @PageableDefault(sort = "id",
+                        direction = Sort.Direction.DESC,
+                        page = 0,
+                        size = 10)
+                    @ApiIgnore Pageable page){
+                    verbete = verbete.toLowerCase();
         return ResponseEntity.ok(verbeteService.findByVerbete(verbete,page));
 
     }
