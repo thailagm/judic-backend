@@ -1,6 +1,8 @@
 package br.rti.tcc.judicbackend.config;
 
+import com.google.common.base.Predicate;
 import org.springframework.context.annotation.Bean;
+import springfox.documentation.RequestHandler;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -14,8 +16,8 @@ public class SwaggerConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("br.rti.tcc.judicbackend"))
-                .paths(PathSelectors.any())
+                .apis((Predicate<RequestHandler>) RequestHandlerSelectors.basePackage("br.rti.tcc.judicbackend"))
+                .paths((Predicate<String>) PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo());
     }
