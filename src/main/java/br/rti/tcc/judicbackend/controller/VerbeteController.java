@@ -40,7 +40,7 @@ public class VerbeteController {
             @PageableDefault(sort = "id",
                     direction = Sort.Direction.ASC,
                     page = 0,
-                    size = 10) @ApiIgnore Pageable page){
+                    size = 50) @ApiIgnore Pageable page){
         return ResponseEntity.ok(verbeteService.listAll(page));
     }
 
